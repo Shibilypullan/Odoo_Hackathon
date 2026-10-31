@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Details - Brightloop</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            color: #159a8a;
+        }
+
+        p {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px 10px 0 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Product Details</h1>
+
+    <p><strong>Name:</strong> {{ product.name }}</p>
+
+    <p><strong>Product Type:</strong> {{ product.product_type }}</p>
+
+    <p><strong>Sales Price:</strong> ₹{{ product.sales_price }}</p>
+
+    <p><strong>Cost Price:</strong> ₹{{ product.cost_price }}</p>
+
+    <p><strong>Notes:</strong> {{ product.notes }}</p>
+
+    <a href="{% url 'products:product_update' product.pk %}">
+        Edit Product
+    </a>
+
+    <a href="{% url 'products:product_list' %}">
+        Back to Products
+    </a>
+
+</div>
+
+</body>
+</html>

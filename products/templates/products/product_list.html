@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brightloop - Products</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            color: #159a8a;
+        }
+
+        .add-btn {
+            display: inline-block;
+            background: #159a8a;
+            color: white;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 13px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #e9f5f3;
+        }
+
+        a {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Brightloop – Product Management</h1>
+
+    <p>Manage your products and pricing.</p>
+
+    <a href="{% url 'products:product_create' %}" class="add-btn">
+        + Add Product
+    </a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Sales Price</th>
+                <th>Cost Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.product_type }}</td>
+                <td>{{ product.sales_price }}</td>
+                <td>{{ product.cost_price }}</td>
+
+                <td>
+                    <a href="{% url 'products:product_detail' product.pk %}">View</a>
+
+                    <a href="{% url 'products:product_update' product.pk %}">Edit</a>
+
+                    <a href="{% url 'products:product_delete' product.pk %}">Delete</a>
+                </td>
+            </tr>
+
+            {% empty %}
+            <tr>
+                <td colspan="5">No products available yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
