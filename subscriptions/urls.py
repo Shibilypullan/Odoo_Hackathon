@@ -1,10 +1,7 @@
-
 from django.urls import path
 from . import views
 
-
 app_name = 'subscriptions'
-
 
 urlpatterns = [
     # Quotation pages
@@ -20,7 +17,7 @@ urlpatterns = [
         name='quotation_create'
     ),
 
-    # Quotation and subscription details
+    # Quotation details
     path(
         'quotations/<int:pk>/',
         views.quotation_detail,
