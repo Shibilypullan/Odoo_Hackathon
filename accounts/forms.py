@@ -1,3 +1,4 @@
+
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import User
@@ -21,7 +22,9 @@ class CustomerRegistrationForm(UserCreationForm):
             user.save()
 
         return user
-        class StaffCreationForm(UserCreationForm):
+
+
+class StaffCreationForm(UserCreationForm):
 
     class Meta:
         model = User
